@@ -29,13 +29,11 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
 
-
     @Override
     public String toString() {
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
                 ", products=" + products +
                 '}';
     }

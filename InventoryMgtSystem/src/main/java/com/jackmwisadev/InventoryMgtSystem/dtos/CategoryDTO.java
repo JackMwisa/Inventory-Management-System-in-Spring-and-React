@@ -19,9 +19,7 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CategoryDTO {
 
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
     @NotBlank(message = "Name is required")
@@ -32,13 +30,5 @@ public class CategoryDTO {
     private List<ProductDTO> products;
 
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", products=" + products +
-                '}';
-    }
+
 }
