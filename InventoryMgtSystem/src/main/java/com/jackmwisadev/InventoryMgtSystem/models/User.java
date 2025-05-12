@@ -1,5 +1,4 @@
 package com.jackmwisadev.InventoryMgtSystem.models;
-
 import jakarta.persistence.*;
 import jakarta.transaction.Transaction;
 import jakarta.validation.constraints.NotBlank;
@@ -25,6 +24,7 @@ public class User {
     @NotBlank(message = "Name is required")
     private String name;
 
+    @Column(unique = true)
     @NotBlank(message = "Email is required")
     private String email;
 
@@ -32,15 +32,15 @@ public class User {
     private String password;
 
     @NotBlank(message = "Phone Number is required")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    @OneToMany(mappedBy = "user")
     private List<Transaction> transactions;
 
     private LocalDateTime createdAt = LocalDateTime.now();
-
-
-
 
 }
