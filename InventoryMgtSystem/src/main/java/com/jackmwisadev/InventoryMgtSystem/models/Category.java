@@ -14,10 +14,10 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "categorie s")
 @Data
 @Builder
-public class User {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,36 +25,18 @@ public class User {
     @NotBlank(message = "Name is required")
     private String name;
 
-    @Column(unique = true)
-    @NotBlank(message = "Email is required")
-    private String email;
 
-    @NotBlank(message = "Password is required")
-    private String password;
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Product> products;
 
-    @NotBlank(message = "Phone Number is required")
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
-
-    @OneToMany(mappedBy = "user")
-    private List<Transaction> transactions;
-
-    @Column(name = "ceated_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", role=" + role +
-                ", createdAt=" + createdAt +
+                ", products=" + products +
                 '}';
     }
 }
