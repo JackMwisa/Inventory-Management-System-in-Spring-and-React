@@ -14,10 +14,10 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "categories")
+@Table(name = "suppliers")
 @Data
 @Builder
-public class Category {
+public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,18 +25,11 @@ public class Category {
     @NotBlank(message = "Name is required")
     private String name;
 
+    @NotBlank(message = "contactInfo is required")
+    private String contactInfo;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Product> products;
+    @NotBlank(message = "Address is required")
+    private String address;
 
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", products=" + products +
-                '}';
-    }
 }
