@@ -1,5 +1,6 @@
 package com.jackmwisadev.InventoryMgtSystem.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.jackmwisadev.InventoryMgtSystem.enums.UserRole;
@@ -27,6 +28,7 @@ public class UserDTO {
 
     private String email;
 
+    @JsonIgnore
     private String password;
 
 
@@ -39,7 +41,7 @@ public class UserDTO {
     private List<TransactionDTO> transactions;
 
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
- 
+
 }

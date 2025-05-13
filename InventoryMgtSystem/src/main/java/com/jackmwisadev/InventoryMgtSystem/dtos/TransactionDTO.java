@@ -34,7 +34,7 @@ public class TransactionDTO {
 
     private String description;
     private  String note;
-    private final LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
     private LocalDateTime updateAt;
 
     private ProductDTO product;

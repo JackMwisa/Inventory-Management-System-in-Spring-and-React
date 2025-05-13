@@ -38,7 +38,7 @@ public class ProductDTO {
     private LocalDateTime expiryDate;
     private String imageUrl;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime createdAt;
 
 
 
