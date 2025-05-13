@@ -19,12 +19,10 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CategoryDTO {
 
-
     private Long id;
 
     @NotBlank(message = "Name is required")
     private String name;
-
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<ProductDTO> products;
