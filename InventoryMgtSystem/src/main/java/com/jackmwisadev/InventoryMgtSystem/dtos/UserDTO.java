@@ -1,5 +1,7 @@
 package com.jackmwisadev.InventoryMgtSystem.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.jackmwisadev.InventoryMgtSystem.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -11,50 +13,33 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-@Data
-@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
-    @NotBlank(message = "Name is required")
+
     private String name;
 
-    @Column(unique = true)
-    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank(message = "Password is required")
     private String password;
 
-    @NotBlank(message = "Phone Number is required")
-    @Column(name = "phone_number")
+
     private String phoneNumber;
 
-    @Enumerated(EnumType.STRING)
+
     private UserRole role;
 
     @OneToMany(mappedBy = "user")
     private List<TransactionDTO> transactions;
 
-    @Column(name = "ceated_at")
+
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", role=" + role +
-                ", createdAt=" + createdAt +
-                '}';
-    }
+ 
 }
