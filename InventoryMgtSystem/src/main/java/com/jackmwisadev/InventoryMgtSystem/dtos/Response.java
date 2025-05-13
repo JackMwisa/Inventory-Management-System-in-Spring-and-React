@@ -7,6 +7,7 @@ import com.jackmwisadev.InventoryMgtSystem.models.Supplier;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -35,7 +36,7 @@ public class Response {
     private List<SupplierDTO> suppliers;
 
     private  CategoryDTO category;
-    private List<CategoryDTO> Categorys;
+    private List<CategoryDTO> categories;
 
     private ProductDTO product;
     private List<ProductDTO> products;
@@ -44,6 +45,6 @@ public class Response {
     private List<TransactionDTO> transactions;
 
 
-    
+    private final LocalDateTime timeStamp = LocalDateTime.now();
 
 }
