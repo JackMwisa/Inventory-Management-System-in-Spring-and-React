@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class RegisterRequest {
 
     @NotBlank(message = "Email is required")
-    private String name;]
+    private String name;
 
     @NotBlank(message = "Email is required")
     private String email;
